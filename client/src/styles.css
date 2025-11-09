@@ -1,0 +1,70 @@
+:root{
+  --bg:#0b0f14;
+  --card:#0f1720;
+  --text:#e6eef6;
+  --muted:#9aa6b2;
+}
+body{ margin:0; font-family:Inter, Arial, sans-serif; background:var(--bg); color:var(--text); min-height:100vh; }
+.app{ display:flex; flex-direction:column; min-height:100vh;}
+.header{ padding:12px 20px; font-weight:700; background:linear-gradient(90deg,#071023,#0b1220); }
+/* put into client/src/styles.css (append) */
+
+.header {
+  display: flex;
+  justify-content: center; /* center title */
+  align-items: center;
+  padding: 18px 0;
+  font-weight: 800;
+  font-size: 22px;
+  letter-spacing: 1px;
+  color: #e6eef6;
+}
+
+.top-cards {
+  display:flex;
+  gap:18px;
+  justify-content:center;
+  margin-top: 18px;
+}
+
+.top-card {
+  width:220px;
+  height:120px;
+  background: linear-gradient(180deg, rgba(20,40,60,0.9), rgba(10,20,30,0.9));
+  border-radius:12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  cursor:pointer;
+}
+
+/* register and footer */
+.register-wrap { text-align:center; margin-top:18px; }
+.footer { text-align:center; color:#98a6b3; padding:14px 0; margin-top:22px; font-size:13px }
+
+/* admin table overflow */
+.admin-table-wrapper {
+  max-width: 100%;
+  overflow: auto; /* scroll inside the card */
+  background: #07101a;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+/* small responsive tweaks */
+@media (max-width: 900px) {
+  .top-cards { flex-direction: column; align-items:center; }
+  .card { width: 95%; }
+}
+
+.main{ flex:1; padding:40px; display:flex; align-items:flex-start; justify-content:center; }
+.footer{ padding:10px 20px; text-align:center; color:var(--muted); }
+.card{ background:var(--card); padding:20px; border-radius:12px; width:680px; max-width:95%; box-shadow: 0 6px 18px rgba(0,0,0,0.6); }
+.role-cards{ display:flex; gap:12px; margin-top:10px;}
+button{ background:#14283a; color:var(--text); padding:8px 12px; border-radius:8px; border:none; cursor:pointer;}
+input{ display:block; width:100%; padding:10px; margin:8px 0; border-radius:8px; border:none; background:#07101a; color:var(--text); }
+a{ color:#6dd3ff; text-decoration:none; }
+table{ width:100%; border-collapse:collapse; color:var(--text); }
+th, td{ padding:6px 8px; border-bottom:1px solid rgba(255,255,255,0.03); text-align:left; font-size:13px; }

@@ -1,0 +1,32 @@
+{
+  "admins": [
+    {
+      "id": 1,
+      "name": "Admin",
+      "email": "admin@example.com",
+      "password": "admin123"
+    }
+  ],
+  "teachers": [
+    {
+      "id": 1762351396829,
+      "name": "RAJESH",
+      "email": "rajesh@teacher.in",
+      "collegeId": "1TCHCS",
+      "password": "rajesh",
+      "subjects": [],
+      "classes": []
+    }
+  ],
+  "students": [
+    {
+      "id": 1762352107222,
+      "name": "Monish V",
+      "email": "monish@student.in",
+      "className": "5B",
+      "profilePic": null,
+      "password": "student123"
+    }
+  ],
+  "requests": []
+}
