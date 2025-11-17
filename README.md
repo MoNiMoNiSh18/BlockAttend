@@ -1,16 +1,13 @@
-# BlockAttend - Scaffold
+# BlockAttend 
 
-This scaffold implements a minimal **Blockchain-based Attendance System** with:
+**Blockchain-based Attendance System** with:
 - Hardhat solidity contract that stores attendance records (events).
 - Node/Express backend using **local JSON files** (offline friendly) and optional push to local Hardhat node using ethers.
 - React frontend (minimal) with dark theme and the basic flows: teacher registration, admin approval, teacher add student, mark attendance (backend).
 
-Important: this is a scaffold to deliver a working model by deadline. It demonstrates the requested features and is designed to run **locally** on a Windows 11 64-bit machine. You can extend it further.
-
 ## Prerequisites
 - Node.js 18+ and npm
-- Git (optional)
-- Recommended terminal: Windows PowerShell or WSL2 (recommended for better compatibility)
+- Git (optional)-
 - Port 4000 free (backend). Hardhat default RPC at 8545.
 
 ## Quick start (one-time)
