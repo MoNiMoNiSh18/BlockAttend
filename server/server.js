@@ -146,6 +146,29 @@ app.post("/api/auth/register", async (req, res) => {
   }
 });
 
+app.get("/api/admin/teachers-count", (req, res) => {
+  try {
+    const allUsers = readAllUsersObj();
+    const teachers = allUsers.teachers || [];
+    res.json({ count: teachers.length });
+  } catch (err) {
+    console.error("Teachers count error:", err);
+    res.status(500).json({ error: "Server error" });
+  }
+});
+
+app.get("/api/admin/students-count", (req, res) => {
+  try {
+    const allUsers = readAllUsersObj();
+    const students = allUsers.students || [];
+    res.json({ count: students.length });
+  } catch (err) {
+    console.error("Students count error:", err);
+    res.status(500).json({ error: "Server error" });
+  }
+});
+
+
 // Login endpoint
 app.post("/api/auth/login", async (req, res) => {
   try {

@@ -22,8 +22,8 @@ export default function Home() {
       password: formData.password,
       role: registerType,
       ...(registerType === "teacher" && {
-        subjects: formData.subjects.split(",").map(s => s.trim()),
-        classes: formData.classes.split(",").map(c => c.trim()),
+        subjects: formData.subjects.split(",").map((s) => s.trim()),
+        classes: formData.classes.split(",").map((c) => c.trim()),
       }),
       ...(registerType === "student" && { className: formData.className }),
       status: "pending",
@@ -36,49 +36,78 @@ export default function Home() {
 
     setShowRegisterModal(false);
     setRegisterType(null);
-    setFormData({ name: "", email: "", password: "", subjects: "", classes: "", className: "" });
+    setFormData({
+      name: "",
+      email: "",
+      password: "",
+      subjects: "",
+      classes: "",
+      className: "",
+    });
     alert("✓ Registration request submitted! Admin will review it soon.");
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-neutral-900 to-black">
+    <div className="min-h-screen bg-gradient-to-br from-black via-neutral-950 to-black text-white">
       <div className="text-center py-20 px-4">
-        <div className="mb-12">
-          <h1 className="text-6xl font-black bg-gradient-to-r from-cyan-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent mb-3">BlockAttend</h1>
-          <p className="text-gray-400 text-lg font-light">Smart Attendance Management System</p>
-        </div>
-        
-        <p className="text-gray-500 mb-16">Select your role to continue</p>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-16">
-          <Link to="/admin-login" className="group bg-gradient-to-br from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 p-10 rounded-xl transition transform hover:scale-105 shadow-lg hover:shadow-blue-500/50 duration-300">
-            <h2 className="text-2xl font-bold mb-2 text-white">Admin</h2>
-            <p className="text-blue-100">Manage & Approve</p>
-          </Link>
-
-          <Link to="/teacher-login" className="group bg-gradient-to-br from-green-600 to-green-700 hover:from-green-500 hover:to-green-600 p-10 rounded-xl transition transform hover:scale-105 shadow-lg hover:shadow-green-500/50 duration-300">
-            <h2 className="text-2xl font-bold mb-2 text-white">Teacher</h2>
-            <p className="text-green-100">Mark Attendance</p>
-          </Link>
-
-          <Link to="/student-login" className="group bg-gradient-to-br from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 p-10 rounded-xl transition transform hover:scale-105 shadow-lg hover:shadow-purple-500/50 duration-300">
-            <h2 className="text-2xl font-bold mb-2 text-white">Student</h2>
-            <p className="text-purple-100">View Records</p>
-          </Link>
+        <div className="mb-16">
+          <h1 className="text-7xl font-extrabold bg-gradient-to-r from-cyan-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(0,200,255,0.4)]">
+            BlockAttend
+          </h1>
         </div>
 
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl font-bold mb-6 text-white">New User?</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <p className="text-gray-500 mb-12 text-lg">Select your role to continue</p>
+
+        {/* ROLE CARDS */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-20">
+          <Link
+            to="/admin-login"
+            className="group p-10 rounded-2xl bg-neutral-900/40 backdrop-blur-md border border-neutral-700 hover:border-blue-500 transition-all duration-300 hover:scale-[1.03] shadow-xl hover:shadow-blue-500/30"
+          >
+            <h2 className="text-3xl font-bold mb-2 group-hover:text-blue-400 transition">
+              Admin
+            </h2>
+          </Link>
+
+          <Link
+            to="/teacher-login"
+            className="group p-10 rounded-2xl bg-neutral-900/40 backdrop-blur-md border border-neutral-700 hover:border-green-500 transition-all duration-300 hover:scale-[1.03] shadow-xl hover:shadow-green-500/30"
+          >
+            <h2 className="text-3xl font-bold mb-2 group-hover:text-green-400 transition">
+              Teacher
+            </h2>
+          </Link>
+
+          <Link
+            to="/student-login"
+            className="group p-10 rounded-2xl bg-neutral-900/40 backdrop-blur-md border border-neutral-700 hover:border-purple-500 transition-all duration-300 hover:scale-[1.03] shadow-xl hover:shadow-purple-500/30"
+          >
+            <h2 className="text-3xl font-bold mb-2 group-hover:text-purple-400 transition">
+              Student
+            </h2>
+          </Link>
+        </div>
+
+        {/* REGISTER BUTTONS */}
+        <div className="max-w-xl mx-auto">
+          <h2 className="text-2xl font-bold mb-6">New User?</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             <button
-              onClick={() => { setRegisterType("teacher"); setShowRegisterModal(true); }}
-              className="px-6 py-3 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-500 hover:to-green-600 text-white rounded-lg font-semibold transition"
+              onClick={() => {
+                setRegisterType("teacher");
+                setShowRegisterModal(true);
+              }}
+              className="px-6 py-3 rounded-lg bg-neutral-900/60 border border-green-500/40 hover:bg-neutral-800 hover:border-green-400 transition-all text-white font-semibold shadow-lg hover:shadow-green-500/20"
             >
               Register as Teacher
             </button>
+
             <button
-              onClick={() => { setRegisterType("student"); setShowRegisterModal(true); }}
-              className="px-6 py-3 bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 text-white rounded-lg font-semibold transition"
+              onClick={() => {
+                setRegisterType("student");
+                setShowRegisterModal(true);
+              }}
+              className="px-6 py-3 rounded-lg bg-neutral-900/60 border border-purple-500/40 hover:bg-neutral-800 hover:border-purple-400 transition-all text-white font-semibold shadow-lg hover:shadow-purple-500/20"
             >
               Register as Student
             </button>
@@ -86,55 +115,77 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Register Modal */}
+      {/* REGISTER MODAL */}
       {showRegisterModal && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
-          <div className="bg-neutral-800 rounded-xl shadow-2xl w-full max-w-md border border-neutral-700">
-            <div className={`bg-gradient-to-r ${registerType === "teacher" ? "from-green-600 to-green-700" : "from-purple-600 to-purple-700"} px-8 py-6 flex justify-between items-center`}>
-              <h2 className="text-2xl font-bold">Register as {registerType === "teacher" ? "Teacher" : "Student"}</h2>
-              <button onClick={() => setShowRegisterModal(false)} className="text-2xl">&times;</button>
+        <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center p-5 z-50">
+          <div className="w-full max-w-lg bg-neutral-900/90 border border-neutral-700 rounded-2xl shadow-2xl overflow-hidden">
+            <div
+              className={`px-8 py-5 text-white font-bold text-xl bg-gradient-to-r ${
+                registerType === "teacher"
+                  ? "from-green-600 to-green-700"
+                  : "from-purple-600 to-purple-700"
+              }`}
+            >
+              Register as {registerType === "teacher" ? "Teacher" : "Student"}
             </div>
-            <form onSubmit={handleRegisterSubmit} className="p-8 space-y-4">
+
+            <form onSubmit={handleRegisterSubmit} className="p-8 space-y-5">
+              {/* Inputs */}
               <input
                 type="text"
                 placeholder="Full Name"
                 value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="w-full px-4 py-3 bg-neutral-700 border border-neutral-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400"
+                onChange={(e) =>
+                  setFormData({ ...formData, name: e.target.value })
+                }
+                className="w-full px-4 py-3 bg-neutral-800 border border-neutral-700 rounded-lg text-white focus:border-cyan-400 transition"
                 required
               />
+
               <input
                 type="email"
                 placeholder="Email"
                 value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="w-full px-4 py-3 bg-neutral-700 border border-neutral-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400"
+                onChange={(e) =>
+                  setFormData({ ...formData, email: e.target.value })
+                }
+                className="w-full px-4 py-3 bg-neutral-800 border border-neutral-700 rounded-lg text-white focus:border-cyan-400 transition"
                 required
               />
+
               <input
                 type="password"
                 placeholder="Password"
                 value={formData.password}
-                onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                className="w-full px-4 py-3 bg-neutral-700 border border-neutral-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400"
+                onChange={(e) =>
+                  setFormData({ ...formData, password: e.target.value })
+                }
+                className="w-full px-4 py-3 bg-neutral-800 border border-neutral-700 rounded-lg text-white focus:border-cyan-400 transition"
                 required
               />
+
+              {/* Conditional inputs */}
               {registerType === "teacher" ? (
                 <>
                   <input
                     type="text"
                     placeholder="Subjects (comma separated)"
                     value={formData.subjects}
-                    onChange={(e) => setFormData({ ...formData, subjects: e.target.value })}
-                    className="w-full px-4 py-3 bg-neutral-700 border border-neutral-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400"
+                    onChange={(e) =>
+                      setFormData({ ...formData, subjects: e.target.value })
+                    }
+                    className="w-full px-4 py-3 bg-neutral-800 border border-neutral-700 rounded-lg text-white focus:border-cyan-400 transition"
                     required
                   />
+
                   <input
                     type="text"
                     placeholder="Classes (comma separated)"
                     value={formData.classes}
-                    onChange={(e) => setFormData({ ...formData, classes: e.target.value })}
-                    className="w-full px-4 py-3 bg-neutral-700 border border-neutral-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400"
+                    onChange={(e) =>
+                      setFormData({ ...formData, classes: e.target.value })
+                    }
+                    className="w-full px-4 py-3 bg-neutral-800 border border-neutral-700 rounded-lg text-white focus:border-cyan-400 transition"
                     required
                   />
                 </>
@@ -143,19 +194,31 @@ export default function Home() {
                   type="text"
                   placeholder="Class Name (e.g., 5A)"
                   value={formData.className}
-                  onChange={(e) => setFormData({ ...formData, className: e.target.value })}
-                  className="w-full px-4 py-3 bg-neutral-700 border border-neutral-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400"
+                  onChange={(e) =>
+                    setFormData({ ...formData, className: e.target.value })
+                  }
+                  className="w-full px-4 py-3 bg-neutral-800 border border-neutral-700 rounded-lg text-white focus:border-cyan-400 transition"
                   required
                 />
               )}
-              <div className="flex gap-3 pt-4">
-                <button type="submit" className={`flex-1 px-4 py-3 bg-gradient-to-r ${registerType === "teacher" ? "from-green-600 to-green-700 hover:from-green-500 hover:to-green-600" : "from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600"} rounded-lg font-semibold transition text-white`}>
-                  Submit Request
+
+              {/* Buttons */}
+              <div className="flex gap-4 pt-4">
+                <button
+                  type="submit"
+                  className={`flex-1 py-3 rounded-lg text-white font-semibold transition shadow-lg ${
+                    registerType === "teacher"
+                      ? "bg-gradient-to-r from-green-600 to-green-700 hover:brightness-110"
+                      : "bg-gradient-to-r from-purple-600 to-purple-700 hover:brightness-110"
+                  }`}
+                >
+                  Submit
                 </button>
+
                 <button
                   type="button"
                   onClick={() => setShowRegisterModal(false)}
-                  className="flex-1 px-4 py-3 bg-neutral-700 hover:bg-neutral-600 rounded-lg font-semibold transition text-white"
+                  className="flex-1 py-3 bg-neutral-800 border border-neutral-700 hover:bg-neutral-700 rounded-lg transition text-white font-semibold"
                 >
                   Cancel
                 </button>

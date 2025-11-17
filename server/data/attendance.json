@@ -151,6 +151,30 @@
       "studentEmail": "monish@college.in",
       "date": "2025-11-16",
       "present": true
+    },
+    {
+      "teacherEmail": "toc_teacher@college.in",
+      "subject": null,
+      "className": "5A",
+      "studentEmail": "aarav@college.in",
+      "date": "2025-11-17",
+      "present": true
+    },
+    {
+      "teacherEmail": "toc_teacher@college.in",
+      "subject": null,
+      "className": "5A",
+      "studentEmail": "vivaan@college.in",
+      "date": "2025-11-17",
+      "present": true
+    },
+    {
+      "teacherEmail": "toc_teacher@college.in",
+      "subject": null,
+      "className": "5A",
+      "studentEmail": "monish@college.in",
+      "date": "2025-11-17",
+      "present": false
     }
   ]
 }

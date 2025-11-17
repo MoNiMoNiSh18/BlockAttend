@@ -26,33 +26,54 @@ export default function TeacherLogin() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-neutral-900 to-black flex items-center justify-center p-4">
-      <div className="bg-neutral-800 p-8 rounded-xl shadow-2xl w-full max-w-md border border-neutral-700">
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold bg-gradient-to-r from-green-400 to-green-600 bg-clip-text text-transparent">Teacher Login</h1>
+    <div className="min-h-screen bg-black flex items-center justify-center px-4 py-8">
+      {/* Outer emerald glow */}
+      <div className="p-[2px] rounded-2xl bg-gradient-to-br from-green-500 to-emerald-600 shadow-[0_0_40px_rgba(16,185,129,0.35)]">
+        {/* Glass card */}
+        <div className="bg-neutral-900/80 backdrop-blur-xl px-8 py-10 rounded-2xl w-full max-w-md border border-neutral-700/40 shadow-xl">
+          <div className="text-center mb-8">
+            <h1 className="text-4xl font-extrabold tracking-wide bg-gradient-to-r from-green-400 to-green-600 bg-clip-text text-transparent drop-shadow-md">
+              Teacher Login
+            </h1>
+          </div>
+
+          {error && (
+            <div className="bg-red-900/30 text-red-300 p-4 rounded-lg mb-6 border border-red-700/40 text-sm shadow">
+              {error}
+            </div>
+          )}
+
+          <form onSubmit={handleSubmit} className="space-y-5">
+            <div>
+              <input
+                type="email"
+                placeholder="Email Address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full px-4 py-3 bg-neutral-800/60 border border-neutral-700 rounded-lg text-white placeholder-neutral-400 focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition"
+                required
+              />
+            </div>
+
+            <div>
+              <input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full px-4 py-3 bg-neutral-800/60 border border-neutral-700 rounded-lg text-white placeholder-neutral-400 focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition"
+                required
+              />
+            </div>
+
+            <button
+              disabled={loading}
+              className="w-full py-3 rounded-lg font-semibold text-white bg-gradient-to-r from-green-600 to-green-700 hover:scale-[1.02] hover:from-green-500 hover:to-green-600 transition-all duration-200 shadow-lg disabled:opacity-50 disabled:hover:scale-100"
+            >
+              {loading ? "Logging in..." : "Login"}
+            </button>
+          </form>
         </div>
-        {error && <div className="bg-red-900/30 text-red-300 p-4 rounded-lg mb-4 border border-red-700/50">{error}</div>}
-        <form onSubmit={handleSubmit}>
-          <input
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="w-full px-4 py-3 bg-neutral-700 border border-neutral-600 rounded-lg mb-4 text-white placeholder-gray-400 focus:outline-none focus:border-green-500"
-            required
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="w-full px-4 py-3 bg-neutral-700 border border-neutral-600 rounded-lg mb-6 text-white placeholder-gray-400 focus:outline-none focus:border-green-500"
-            required
-          />
-          <button disabled={loading} className="w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-500 hover:to-green-600 text-white py-3 rounded-lg font-bold transition disabled:opacity-50">
-            {loading ? "Logging in..." : "Login"}
-          </button>
-        </form>
       </div>
     </div>
   );
