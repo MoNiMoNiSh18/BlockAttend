@@ -90,8 +90,3 @@ cd client && npm start
 * Production deployment
 
 ---
-
-## 👨‍💻 Author
-
-Monish V
-LinkedIn: (add link here)
